@@ -1,10 +1,34 @@
 # WineWarden
 
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=7CFC00&center=true&vCenter=true&width=820&lines=Play+Windows+games+on+Linux+without+trusting+random+executables+with+your+system." alt="WineWarden tagline" />
+</p>
+
+<p align="center">
+  <img alt="CI" src="https://github.com/ind4skylivey/winewarden/actions/workflows/ci.yml/badge.svg" />
+  <img alt="Security Audit" src="https://github.com/ind4skylivey/winewarden/actions/workflows/security-audit.yml/badge.svg" />
+  <img alt="Release" src="https://github.com/ind4skylivey/winewarden/actions/workflows/release.yml/badge.svg" />
+  <img alt="License" src="https://img.shields.io/github/license/ind4skylivey/winewarden" />
+  <img alt="Rust" src="https://img.shields.io/badge/rust-1.75%2B-ff7a18" />
+  <img alt="Platform" src="https://img.shields.io/badge/platform-linux-4caf50" />
+  <img alt="Status" src="https://img.shields.io/badge/status-pre--alpha-ff5252" />
+</p>
+
 "Play Windows games on Linux without trusting random executables with your system."
 
 WineWarden is a calm, always-on protection layer for Wine, Proton, Lutris, and Steam. It is not an antivirus. It does not moralize. It exists so you can play without anxiety.
 
-## What It Does
+```
+     __      ___           _       __        __         __
+    / /___ _/ (_)___  ____(_)___  / /____ _ / /_____ _ / /_
+   / / __ `/ / / __ \/ __/ / __ \/ __/ _ `/ / __/ __ `/ __/
+  / / /_/ / / / /_/ / /_/ / / / / /_/ (_/ / /_/ /_/ / /_
+ /_/\__,_/_/_/\____/\__/_/_/ /_/\__/\__,_/\__/\__,_/\__/
+
+            W I N E W A R D E N  ·  calm by design
+```
+
+## What It Is
 
 - WineWarden Mode: silent protection with no prompts during gameplay
 - Trust Tiers: clear reassurance signals (Green, Yellow, Red)
@@ -14,12 +38,13 @@ WineWarden is a calm, always-on protection layer for Wine, Proton, Lutris, and S
 - Pirate-Safe Mode: stronger isolation with zero judgment
 - Human Reports: short, calm summaries after each run
 
-## Architecture (Separation of Concerns)
+## Why It Feels Different
 
-- Policy Engine: evaluates access attempts and trust tiers
-- Execution Monitor: runs the game and collects events
-- Prefix Manager: hygiene scanning and lightweight snapshots
-- Reporting Layer: human summaries and structured output
+- Secure by default
+- Easy to relax
+- Hard to break accidentally
+- No popups mid-game
+- No shame, no fear
 
 ## Quick Start
 
@@ -37,27 +62,70 @@ winewarden run /path/to/game.exe --event-log tests/fixtures/events.jsonl --no-ru
 winewarden report --input ~/.local/share/winewarden/reports/<id>.json
 ```
 
-## Calm Defaults
+## Daemon Mode
 
-- Secure by default
-- Easy to relax
-- Hard to break accidentally
+```bash
+# Start the background daemon
+winewarden daemon start
 
-## CLI Overview
+# Run a game through the daemon
+winewarden run --daemon /path/to/game.exe -- -arg1 -arg2
 
-- `winewarden init` write the default config
-- `winewarden run` run a game with WineWarden Mode
-- `winewarden report` render a human summary
-- `winewarden trust get/set` manage trust tiers
-- `winewarden prefix scan/snapshot` hygiene and snapshots
+# Check daemon health
+winewarden daemon ping
+```
+
+## Architecture (Separation of Concerns)
+
+- Policy Engine: decisions only
+- Monitor: observation without interruption
+- Runner: safe command construction
+- Prefix Manager: hygiene, snapshots, quarantine
+- Reporting: human summaries and JSON
+- WineWarden Daemon: background scheduling
+
+```
+   [Runner] → [Monitor] → [Policy Engine] → [Reporting]
+        ↘        ↘              ↘              ↘
+     [Prefix Manager]        [Trust Tiers]   [Human Reports]
+```
 
 ## Configuration
 
-See `config/default.toml` for the default policy. The file is human-readable TOML and uses variables:
+Configuration is TOML and readable by design. See:
+
+- `config/default.toml`
+- `config/relaxed.toml`
+- `config/pirate-safe.toml`
+
+Variables supported:
 
 - `${HOME}`
 - `${DATA_DIR}`
 - `${CONFIG_DIR}`
+
+## Reports (Human First)
+
+Examples of the tone you should expect:
+
+- "This game tried to access files outside its sandbox."
+- "That access was denied."
+- "Your system remains intact."
+
+## Documentation
+
+- `docs/vision.md`
+- `docs/threat-model.md`
+- `docs/winewarden-mode.md`
+- `docs/trust-tiers.md`
+- `docs/sacred-zones.md`
+- `docs/prefix-hygiene.md`
+- `docs/networking.md`
+- `docs/pirate-safe-mode.md`
+- `docs/reports.md`
+- `docs/configuration.md`
+- `docs/architecture.md`
+- `docs/glossary.md`
 
 ## Status
 
