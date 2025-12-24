@@ -30,6 +30,7 @@ calm by design · silent by default · strict by choice
 
 ## What It Is
 
+- Active Enforcement: Landlock sandboxing and Seccomp syscall interception
 - WineWarden Mode: silent protection with no prompts during gameplay
 - Trust Tiers: clear reassurance signals (Green, Yellow, Red)
 - Sacred Zones: protect the places games should never need
@@ -45,6 +46,30 @@ calm by design · silent by default · strict by choice
 - Hard to break accidentally
 - No popups mid-game
 - No shame, no fear
+
+## Active Protection & Requirements
+
+WineWarden now enforces security actively using kernel-level features:
+- **Landlock LSM:** Creates a strict filesystem sandbox, blocking access to your personal files (`$HOME`, `.ssh`, etc.) unless explicitly allowed.
+- **Seccomp User Notification:** Intercepts network calls (`connect`, `bind`) in real-time, allowing the Policy Engine to decide based on destination IP/Port.
+
+### System Requirements
+- **Linux Kernel 5.11+** (Required for Landlock and Seccomp Notify)
+- **libseccomp** development headers:
+  - Debian/Ubuntu: `sudo apt install libseccomp-dev`
+  - Fedora: `sudo dnf install libseccomp-devel`
+  - Arch: `sudo pacman -S libseccomp`
+
+## Installation
+
+```bash
+# 1. Build from source
+cargo build --release
+
+# 2. Install binaries
+cargo install --path crates/winewarden-cli
+cargo install --path crates/winewarden-daemon
+```
 
 ## Quick Start
 
@@ -312,4 +337,4 @@ Examples of the tone you should expect:
 
 ## Status
 
-This is the foundation. Real enforcement hooks are designed to plug into the monitor layer without changing the calm user experience.
+The foundation is solid. Active enforcement hooks (Landlock and Seccomp) are implemented and integrated into the monitor layer, providing real protection without changing the calm user experience.
