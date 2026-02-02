@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fadeObserver.observe(el);
     });
 
-    // Carousel functionality
+    // Carousel functionality - Laracasts style
     const carouselTrack = document.querySelector('.carousel-track');
     const prevBtn = document.querySelector('.carousel-btn.prev');
     const nextBtn = document.querySelector('.carousel-btn.next');
@@ -63,41 +63,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (carouselTrack && cards.length > 0) {
         let currentIndex = 0;
-        const cardWidth = 382; // 350px card + 32px gap
-        const totalCards = cards.length;
-        let autoplayInterval;
+        let autoplayInterval = null;
         let isPaused = false;
 
-        function getMaxIndex() {
-            const visibleCards = Math.floor(window.innerWidth / cardWidth);
-            return Math.max(0, totalCards - visibleCards);
+        // Get card width including gap
+        function getCardWidth() {
+            const card = cards[0];
+            const style = window.getComputedStyle(card);
+            const width = card.offsetWidth;
+            const marginRight = parseInt(style.marginRight) || 0;
+            const marginLeft = parseInt(style.marginLeft) || 0;
+            return width + marginRight + marginLeft;
         }
 
-        function updateCarousel() {
-            carouselTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        // Get gap from container
+        function getGap() {
+            const style = window.getComputedStyle(carouselTrack);
+            const gap = style.gap || style.gridGap;
+            return parseInt(gap) || 32; // default 32px
+        }
+
+        // Calculate how many cards to show
+        function getVisibleCards() {
+            const containerWidth = carouselContainer.offsetWidth;
+            const cardWidth = cards[0].offsetWidth;
+            const gap = getGap();
+            return Math.floor((containerWidth + gap) / (cardWidth + gap));
+        }
+
+        // Get max index
+        function getMaxIndex() {
+            const visible = getVisibleCards();
+            return Math.max(0, cards.length - visible);
+        }
+
+        // Move carousel
+        function goToSlide(index) {
+            const maxIndex = getMaxIndex();
+            
+            if (index < 0) {
+                currentIndex = maxIndex;
+            } else if (index > maxIndex) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+
+            const cardWidth = cards[0].offsetWidth;
+            const gap = getGap();
+            const offset = currentIndex * (cardWidth + gap);
+            
+            carouselTrack.style.transform = `translateX(-${offset}px)`;
         }
 
         function nextSlide() {
-            const maxIndex = getMaxIndex();
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-            } else {
-                currentIndex = 0; // Loop back to start
-            }
-            updateCarousel();
+            goToSlide(currentIndex + 1);
         }
 
         function prevSlide() {
-            const maxIndex = getMaxIndex();
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = maxIndex; // Loop to end
-            }
-            updateCarousel();
+            goToSlide(currentIndex - 1);
         }
 
-        // Autoplay functionality
+        // Autoplay
         function startAutoplay() {
             stopAutoplay();
             autoplayInterval = setInterval(() => {
@@ -114,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Start autoplay
+        // Initialize autoplay
         startAutoplay();
 
         // Pause on hover
@@ -145,46 +172,46 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Handle resize
+        // Handle window resize
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-            const maxIndex = getMaxIndex();
-            if (currentIndex > maxIndex) {
-                currentIndex = maxIndex;
-                updateCarousel();
-            }
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const maxIndex = getMaxIndex();
+                if (currentIndex > maxIndex) {
+                    currentIndex = maxIndex;
+                }
+                goToSlide(currentIndex);
+            }, 100);
         });
 
         // Touch/swipe support
-        let startX = 0;
-        let isDragging = false;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
         carouselTrack.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-            isPaused = true; // Pause while touching
-        });
-
-        carouselTrack.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-        });
+            touchStartX = e.changedTouches[0].screenX;
+            isPaused = true;
+        }, { passive: true });
 
         carouselTrack.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            isPaused = false; // Resume after touch
+            touchEndX = e.changedTouches[0].screenX;
+            isPaused = false;
+            handleSwipe();
+        }, { passive: true });
 
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
 
-            if (Math.abs(diff) > 50) {
-                if (diff > 0 && currentIndex < maxIndex) {
-                    currentIndex++;
-                } else if (diff < 0 && currentIndex > 0) {
-                    currentIndex--;
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
                 }
-                updateCarousel();
             }
-        });
+        }
     }
 });
 
