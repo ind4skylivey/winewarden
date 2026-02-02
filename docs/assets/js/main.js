@@ -63,16 +63,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (carouselTrack && cards.length > 0) {
         let currentIndex = 0;
-        const cardWidth = 350 + 32; // card width + gap
-        const maxIndex = Math.max(0, cards.length - Math.floor(window.innerWidth / cardWidth));
+        const cardWidth = 382; // 350px card + 32px gap
+        const totalCards = cards.length;
         let autoplayInterval;
         let isPaused = false;
+
+        function getMaxIndex() {
+            const visibleCards = Math.floor(window.innerWidth / cardWidth);
+            return Math.max(0, totalCards - visibleCards);
+        }
 
         function updateCarousel() {
             carouselTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
         }
 
         function nextSlide() {
+            const maxIndex = getMaxIndex();
             if (currentIndex < maxIndex) {
                 currentIndex++;
             } else {
@@ -82,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function prevSlide() {
+            const maxIndex = getMaxIndex();
             if (currentIndex > 0) {
                 currentIndex--;
             } else {
@@ -92,15 +99,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Autoplay functionality
         function startAutoplay() {
+            stopAutoplay();
             autoplayInterval = setInterval(() => {
                 if (!isPaused) {
                     nextSlide();
                 }
-            }, 3000); // Change slide every 3 seconds
+            }, 3000);
         }
 
         function stopAutoplay() {
-            clearInterval(autoplayInterval);
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
         }
 
         // Start autoplay
@@ -122,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prevBtn.addEventListener('click', () => {
                 prevSlide();
                 stopAutoplay();
-                startAutoplay(); // Reset timer
+                startAutoplay();
             });
         }
 
@@ -130,9 +141,18 @@ document.addEventListener('DOMContentLoaded', function() {
             nextBtn.addEventListener('click', () => {
                 nextSlide();
                 stopAutoplay();
-                startAutoplay(); // Reset timer
+                startAutoplay();
             });
         }
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            const maxIndex = getMaxIndex();
+            if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+                updateCarousel();
+            }
+        });
 
         // Touch/swipe support
         let startX = 0;
