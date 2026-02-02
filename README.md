@@ -11,7 +11,6 @@
 <p align="center">
   <img alt="CI" src="https://github.com/ind4skylivey/winewarden/actions/workflows/ci.yml/badge.svg" />
   <img alt="Security Audit" src="https://github.com/ind4skylivey/winewarden/actions/workflows/security-audit.yml/badge.svg" />
-  <img alt="Release" src="https://github.com/ind4skylivey/winewarden/actions/workflows/release.yml/badge.svg" />
   <img alt="License" src="https://img.shields.io/github/license/ind4skylivey/winewarden" />
   <img alt="Rust" src="https://img.shields.io/badge/rust-1.75%2B-ff7a18" />
   <img alt="Platform" src="https://img.shields.io/badge/platform-linux-4caf50" />
