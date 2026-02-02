@@ -1,0 +1,19 @@
+<nav class="navbar">
+    <div class="container">
+        <div class="nav-brand">
+            <i class="fas fa-shield-alt"></i>
+            <span>{{ site.title }}</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="{{ "/#features" | relative_url }}">Features</a></li>
+            <li><a href="{{ "/#tui" | relative_url }}">Dashboard</a></li>
+            <li><a href="{{ "/#install" | relative_url }}">Install</a></li>
+            <li><a href="{{ "/blog/" | relative_url }}">Blog</a></li>
+            <li><a href="{{ "/docs/" | relative_url }}">Docs</a></li>
+            <li><a href="{{ site.repository | prepend: "https://github.com/" }}" class="btn-nav" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</nav>

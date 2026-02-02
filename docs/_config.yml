@@ -1,0 +1,55 @@
+# Site settings
+title: "WineWarden"
+description: "Game Without Fear - Security sandbox for Windows games on Linux"
+baseurl: ""
+url: "https://s1b-team.github.io/winewarden"
+
+# GitHub settings
+repository: S1b-Team/winewarden
+github_username: S1b-Team
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "S1BGr0up"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
+# Custom variables
+version: "1.0.0"
+org_name: "S1BGr0up"
+org_url: "https://github.com/S1b-Team"
+author_name: "ind4skylivey"
+author_url: "https://github.com/ind4skylivey"

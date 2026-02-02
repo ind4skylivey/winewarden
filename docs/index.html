@@ -1,0 +1,238 @@
+---
+layout: default
+title: "Game Without Fear"
+---
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="GAME WITHOUT FEAR">GAME WITHOUT FEAR</h1>
+            </div>
+            <p class="hero-subtitle">
+                The security sandbox built by gamers, for gamers. 
+                Run Windows games on Linux with real-time protection that doesn't kill your FPS.
+            </p>
+            <div class="hero-badges">
+                <span class="badge"><i class="fas fa-shield-alt"></i> Kernel-Level Security</span>
+                <span class="badge"><i class="fas fa-terminal"></i> Real-Time TUI</span>
+                <span class="badge"><i class="fas fa-gamepad"></i> Zero Performance Hit</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="#install" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Get WineWarden
+                </a>
+                <a href="#tui" class="btn btn-secondary">
+                    <i class="fas fa-play"></i> See It In Action
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">44</span>
+                    <span class="stat-label">Tests Passing</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5.11+</span>
+                    <span class="stat-label">Kernel</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Performance Loss</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-grid"></div>
+</section>
+
+<!-- Gaming Culture Section -->
+<section class="gaming-culture">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">BUILT BY GAMERS</span>
+            <h2>We Get It. Really.</h2>
+            <p>We're not some corporate security suite. We're Linux gamers who got tired of choosing between security and performance.</p>
+        </div>
+        <div class="culture-grid">
+            <div class="culture-card">
+                <div class="culture-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>No Performance Penalty</h3>
+                <p>We know every FPS counts. WineWarden operates at kernel level with minimal overhead. Your GPU won't even know it's there.</p>
+            </div>
+            <div class="culture-card">
+                <div class="culture-icon">
+                    <i class="fas fa-eye-slash"></i>
+                </div>
+                <h3>No Annoying Popups</h3>
+                <p>Mid-game "ALLOW DENY" prompts? Never. We monitor silently and show you a clean summary after your session.</p>
+            </div>
+            <div class="culture-card">
+                <div class="culture-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>Works With Everything</h3>
+                <p>Steam, Lutris, Heroic, Bottles, raw Wine - we don't judge your setup. We just make it safer.</p>
+            </div>
+            <div class="culture-card">
+                <div class="culture-icon">
+                    <i class="fas fa-skull"></i>
+                </div>
+                <h3>Pirate-Safe Mode</h3>
+                <p>We don't moralize. Got a questionable .exe? Enable strict isolation and run it safely. No lectures.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Blog Posts -->
+<section class="latest-posts">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">LATEST NEWS</span>
+            <h2>From the Blog</h2>
+        </div>
+        <div class="posts-grid">
+            {% for post in site.posts limit:3 %}
+            <article class="post-card">
+                <div class="post-meta">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+                </div>
+                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+                <a href="{{ post.url | relative_url }}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="{{ "/blog/" | relative_url }}" class="btn btn-secondary">View All Posts</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">FEATURES</span>
+            <h2>Your Personal Gaming Fortress</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-folder-tree"></i>
+                </div>
+                <h3>Filesystem Virtualization</h3>
+                <p>Games think they're accessing your home directory. They're actually writing to an isolated sandbox.</p>
+                <ul class="feature-list">
+                    <li>Mount namespace isolation</li>
+                    <li>Copy-on-write efficiency</li>
+                    <li>Landlock LSM enforcement</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card featured">
+                <div class="feature-badge">EPIC LOOT</div>
+                <div class="feature-icon">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <h3>Real-Time TUI Dashboard</h3>
+                <p>Monitor your game like a sysadmin god. Live trust scores, network connections, and process trees.</p>
+                <ul class="feature-list">
+                    <li>5 interactive screens</li>
+                    <li>Trust score graphs</li>
+                    <li>Network & DNS monitoring</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Network Intelligence</h3>
+                <p>See every domain your game queries. Track outbound connections. Know if that "single-player" game phones home.</p>
+                <ul class="feature-list">
+                    <li>Full DNS packet parsing</li>
+                    <li>Destination tracking</li>
+                    <li>Connection telemetry</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Installation Section -->
+<section class="install" id="install">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">INSTALLATION</span>
+            <h2>Get Gaming in 60 Seconds</h2>
+        </div>
+        <div class="install-grid">
+            <div class="install-card">
+                <div class="install-step">01</div>
+                <h3>Build from Source</h3>
+                <div class="code-block">
+                    <pre><code>git clone https://github.com/S1b-Team/winewarden.git
+cd winewarden
+cargo build --release</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                </div>
+            </div>
+            
+            <div class="install-card">
+                <div class="install-step">02</div>
+                <h3>Initialize Config</h3>
+                <div class="code-block">
+                    <pre><code>winewarden init</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                </div>
+            </div>
+            
+            <div class="install-card">
+                <div class="install-step">03</div>
+                <h3>Launch Dashboard</h3>
+                <div class="code-block">
+                    <pre><code>winewarden monitor</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="install-notes">
+            <div class="note">
+                <i class="fas fa-info-circle"></i>
+                <p><strong>Requirements:</strong> Linux kernel 5.11+, libseccomp-dev</p>
+            </div>
+            <div class="note">
+                <i class="fab fa-steam"></i>
+                <p><strong>Steam Integration:</strong> Add <code>winewarden run -- %command%</code> to launch options</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Community Section -->
+<section class="community">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">COMMUNITY</span>
+            <h2>Join the Squad</h2>
+            <p>WineWarden is developed by {{ site.org_name }} - a collective of Linux gamers who believe security shouldn't suck.</p>
+        </div>
+        <div class="community-links">
+            <a href="{{ site.repository | prepend: "https://github.com/" }}" class="community-card" target="_blank">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <p>Star the repo, report issues, contribute code</p>
+            </a>
+            <a href="https://github.com/S1b-Team" class="community-card" target="_blank">
+                <i class="fas fa-users"></i>
+                <h3>{{ site.org_name }}</h3>
+                <p>Check out our other gaming tools</p>
+            </a>
+        </div>
+    </div>
+</section>

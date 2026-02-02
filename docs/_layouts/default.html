@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{% if page.title %}{{ page.title | escape }} | {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+    
+    {% seo %}
+    
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    {% feed_meta %}
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ "/assets/images/favicon.png" | relative_url }}">
+</head>
+<body class="{% if page.layout == 'post' %}post-page{% endif %}">
+    
+    {% include navbar.html %}
+    
+    <main aria-label="Content">
+        {{ content }}
+    </main>
+    
+    {% include footer.html %}
+    
+    <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
+</body>
+</html>

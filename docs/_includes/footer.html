@@ -1,0 +1,21 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>{{ site.title }}</span>
+            </div>
+            <p class="footer-tagline">Calm by design. Silent by default. Strict by choice.</p>
+            <div class="footer-links">
+                <a href="{{ site.repository | prepend: "https://github.com/" }}">GitHub</a>
+                <a href="{{ "/docs/" | relative_url }}">Documentation</a>
+                <a href="{{ "/blog/" | relative_url }}">Blog</a>
+                <a href="{{ site.repository | append: "/blob/main/LICENSE" | prepend: "https://github.com/" }}">License</a>
+            </div>
+            <p class="footer-copyright">
+                © {{ 'now' | date: "%Y" }} {{ site.org_name | default: site.github_username }}. All rights reserved. 
+                Built with <i class="fas fa-heart"></i> by Linux gamers.
+            </p>
+        </div>
+    </div>
+</footer>
