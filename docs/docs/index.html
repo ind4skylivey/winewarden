@@ -3,108 +3,238 @@ layout: default
 title: Documentation
 ---
 
-<section class="docs-header">
+<!-- Hero Section -->
+<section class="docs-hero">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">DOCS</span>
-            <h1>Documentation</h1>
-            <p>Learn how to use WineWarden to secure your gaming experience on Linux.</p>
+        <div class="docs-hero-content">
+            <span class="docs-badge">
+                <i class="fas fa-book"></i> Documentation
+            </span>
+            <h1>Get Started with WineWarden</h1>
+            <p>Everything you need to secure your gaming experience on Linux. From quick start guides to advanced configuration.</p>
+            
+            <div class="docs-search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search documentation..." id="docsSearch">
+            </div>
         </div>
     </div>
 </section>
 
-<section class="docs-content">
+<!-- Quick Links Cards -->
+<section class="docs-quick-links">
     <div class="container">
-        <div class="docs-grid">
-            <div class="doc-card">
-                <div class="doc-icon">
-                    <i class="fas fa-rocket"></i>
+        <div class="quick-links-grid">
+            <a href="#installation" class="quick-link-card">
+                <div class="quick-link-icon blue">
+                    <i class="fas fa-download"></i>
                 </div>
-                <h2>Quick Start</h2>
-                <p>Get WineWarden running in under 5 minutes with our step-by-step installation guide.</p>
-                <a href="#installation" class="read-more">Read Guide <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="doc-card">
-                <div class="doc-icon">
-                    <i class="fas fa-shield-alt"></i>
+                <div class="quick-link-content">
+                    <h3>Installation</h3>
+                    <p>Get up and running in 5 minutes</p>
                 </div>
-                <h2>Security Features</h2>
-                <p>Understand how WineWarden protects your system with kernel-level sandboxing.</p>
-                <a href="#security" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
+                <i class="fas fa-arrow-right quick-link-arrow"></i>
+            </a>
 
-            <div class="doc-card">
-                <div class="doc-icon">
-                    <i class="fas fa-cog"></i>
+            <a href="#configuration" class="quick-link-card">
+                <div class="quick-link-icon purple">
+                    <i class="fas fa-sliders-h"></i>
                 </div>
-                <h2>Configuration</h2>
-                <p>Customize WineWarden to fit your gaming setup with our configuration guide.</p>
-                <a href="#configuration" class="read-more">View Config <i class="fas fa-arrow-right"></i></a>
-            </div>
+                <div class="quick-link-content">
+                    <h3>Configuration</h3>
+                    <p>Customize for your setup</p>
+                </div>
+                <i class="fas fa-arrow-right quick-link-arrow"></i>
+            </a>
 
-            <div class="doc-card">
-                <div class="doc-icon">
+            <a href="#steam" class="quick-link-card">
+                <div class="quick-link-icon green">
                     <i class="fab fa-steam"></i>
                 </div>
-                <h2>Steam Integration</h2>
-                <p>Configure WineWarden with Steam, Proton, and your favorite games.</p>
-                <a href="#steam" class="read-more">Setup Guide <i class="fas fa-arrow-right"></i></a>
-            </div>
+                <div class="quick-link-content">
+                    <h3>Steam & Lutris</h3>
+                    <p>Integration guides</p>
+                </div>
+                <i class="fas fa-arrow-right quick-link-arrow"></i>
+            </a>
+
+            <a href="#security" class="quick-link-card">
+                <div class="quick-link-icon orange">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="quick-link-content">
+                    <h3>Security</h3>
+                    <p>How protection works</p>
+                </div>
+                <i class="fas fa-arrow-right quick-link-arrow"></i>
+            </a>
         </div>
+    </div>
+</section>
 
-        <div class="docs-section" id="installation">
-            <h2>🚀 Installation</h2>
-            
-            <h3>Prerequisites</h3>
-            <ul>
-                <li>Linux kernel 5.11 or higher</li>
-                <li>Rust 1.75+ (for building from source)</li>
-                <li>libseccomp-dev package</li>
-            </ul>
+<!-- Main Documentation Content -->
+<section class="docs-main">
+    <div class="container">
+        <div class="docs-layout">
+            <!-- Sidebar Navigation -->
+            <aside class="docs-sidebar">
+                <nav class="docs-nav">
+                    <h4>Getting Started</h4>
+                    <ul>
+                        <li><a href="#installation" class="docs-nav-link active">Installation</a></li>
+                        <li><a href="#quickstart" class="docs-nav-link">Quick Start</a></li>
+                    </ul>
+                    
+                    <h4>Configuration</h4>
+                    <ul>
+                        <li><a href="#configuration" class="docs-nav-link">Basic Config</a></li>
+                        <li><a href="#trust-tiers" class="docs-nav-link">Trust Tiers</a></li>
+                        <li><a href="#process-rules" class="docs-nav-link">Process Rules</a></li>
+                        <li><a href="#network" class="docs-nav-link">Network Settings</a></li>
+                    </ul>
+                    
+                    <h4>Integrations</h4>
+                    <ul>
+                        <li><a href="#steam" class="docs-nav-link">Steam</a></li>
+                        <li><a href="#lutris" class="docs-nav-link">Lutris</a></li>
+                        <li><a href="#heroic" class="docs-nav-link">Heroic</a></li>
+                    </ul>
+                    
+                    <h4>Security</h4>
+                    <ul>
+                        <li><a href="#security" class="docs-nav-link">Overview</a></li>
+                        <li><a href="#filesystem" class="docs-nav-link">Filesystem</a></li>
+                        <li><a href="#network-security" class="docs-nav-link">Network</a></li>
+                    </ul>
+                </nav>
+            </aside>
 
-            <h3>Quick Install</h3>
-            <div class="code-block">
-                <pre><code># Clone the repository
+            <!-- Content Area -->
+            <div class="docs-content-area">
+                
+                <!-- Installation Section -->
+                <article class="doc-article" id="installation">
+                    <header class="doc-article-header">
+                        <div class="doc-article-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div>
+                            <h2>Installation</h2>
+                            <p class="doc-article-meta">5 minute setup • Rust toolchain required</p>
+                        </div>
+                    </header>
+
+                    <div class="doc-article-body">
+                        <div class="info-box">
+                            <i class="fas fa-info-circle"></i>
+                            <div>
+                                <strong>Requirements</strong>
+                                <ul>
+                                    <li>Linux kernel 5.11 or higher</li>
+                                    <li>Rust 1.75+ (install from <a href="https://rustup.rs">rustup.rs</a>)</li>
+                                    <li>libseccomp-dev package</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>Build from Source</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">Terminal</span>
+                                <button class="copy-btn" onclick="copyCode(this)">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <pre><code># Clone the repository
 git clone https://github.com/S1b-Team/winewarden.git
 cd winewarden
 
 # Build release binary
 cargo build --release
 
-# Install locally
+# Install to local bin
 cargo install --path crates/winewarden-cli</code></pre>
-                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
-            </div>
+                        </div>
 
-            <h3>Initialize Configuration</h3>
-            <div class="code-block">
-                <pre><code>winewarden init</code></pre>
-                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
-            </div>
-        </div>
+                        <h3>Initialize</h3>
+                        <p>Create the default configuration and required directories:</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">Terminal</span>
+                                <button class="copy-btn" onclick="copyCode(this)">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <pre><code>winewarden init</code></pre>
+                        </div>
+                    </div>
+                </article>
 
-        <div class="docs-section" id="security">
-            <h2>🛡️ Security Features</h2>
-            
-            <h3>Filesystem Virtualization</h3>
-            <p>WineWarden uses mount namespaces and Landlock LSM to create isolated filesystem views. Games can only access their designated sandbox, keeping your personal files safe.</p>
+                <!-- Quick Start Section -->
+                <article class="doc-article" id="quickstart">
+                    <header class="doc-article-header">
+                        <div class="doc-article-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h2>Quick Start</h2>
+                            <p class="doc-article-meta">Run your first game</p>
+                        </div>
+                    </header>
 
-            <h3>Network Monitoring</h3>
-            <p>Real-time DNS and connection tracking lets you see exactly what domains your games are contacting. Full packet parsing reveals hidden telemetry.</p>
+                    <div class="doc-article-body">
+                        <div class="steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <div class="step-content">
+                                    <h4>Initialize WineWarden</h4>
+                                    <p>Set up the default configuration</p>
+                                    <code>winewarden init</code>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <div class="step-content">
+                                    <h4>Run a Game</h4>
+                                    <p>Launch with WineWarden protection</p>
+                                    <code>winewarden run -- wine game.exe</code>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <div class="step-content">
+                                    <h4>Monitor</h4>
+                                    <p>Watch real-time security events</p>
+                                    <code>winewarden monitor</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
 
-            <h3>Process Control</h3>
-            <p>Block shell execution, script interpreters, and suspicious child processes. Prevent games from spawning unexpected binaries.</p>
-        </div>
+                <!-- Configuration Section -->
+                <article class="doc-article" id="configuration">
+                    <header class="doc-article-header">
+                        <div class="doc-article-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <div>
+                            <h2>Configuration</h2>
+                            <p class="doc-article-meta">Customize WineWarden behavior</p>
+                        </div>
+                    </header>
 
-        <div class="docs-section" id="configuration">
-            <h2>⚙️ Configuration</h2>
-            
-            <p>Configuration file location: <code>~/.config/winewarden/config.toml</code></p>
+                    <div class="doc-article-body">
+                        <p>Configuration file location: <code class="inline-code">~/.config/winewarden/config.toml</code></p>
 
-            <h3>Example Configuration</h3>
-            <div class="code-block">
-                <pre><code>[winewarden]
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-label">config.toml</span>
+                                <button class="copy-btn" onclick="copyCode(this)">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <pre><code>[winewarden]
 enabled = true
 no_prompts_during_gameplay = true
 
@@ -120,36 +250,218 @@ max_child_processes = 50
 [network]
 mode = "observe"
 dns_awareness = true</code></pre>
-                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
-            </div>
-        </div>
+                        </div>
 
-        <div class="docs-section" id="steam">
-            <h2>🎮 Steam Integration</h2>
-            
-            <h3>Using with Steam</h3>
-            <p>Add this to your game's launch options in Steam:</p>
-            
-            <div class="code-block">
-                <pre><code>winewarden run -- %command%</code></pre>
-                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
-            </div>
+                        <div class="config-options">
+                            <h4>Key Options</h4>
+                            <div class="option-grid">
+                                <div class="option-card">
+                                    <code>trust.default_tier</code>
+                                    <p>Starting trust level: <span class="badge-green">green</span>, <span class="badge-yellow">yellow</span>, <span class="badge-red">red</span></p>
+                                </div>
+                                <div class="option-card">
+                                    <code>network.mode</code>
+                                    <p>Action on suspicious traffic: <span class="badge">observe</span>, <span class="badge">block</span>, <span class="badge">allow</span></p>
+                                </div>
+                                <div class="option-card">
+                                    <code>process.max_child_processes</code>
+                                    <p>Limit game process spawning</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
 
-            <h3>Using with Lutris</h3>
-            <p>In Lutris, add to System Options > Command prefix:</p>
-            
-            <div class="code-block">
-                <pre><code>winewarden run --</code></pre>
-                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
-            </div>
-        </div>
+                <!-- Steam Integration Section -->
+                <article class="doc-article" id="steam">
+                    <header class="doc-article-header">
+                        <div class="doc-article-icon">
+                            <i class="fab fa-steam"></i>
+                        </div>
+                        <div>
+                            <h2>Steam Integration</h2>
+                            <p class="doc-article-meta">Use with your Steam library</p>
+                        </div>
+                    </header>
 
-        <div class="docs-cta">
-            <h3>Need More Help?</h3>
-            <p>Check out our GitHub repository for detailed documentation and examples.</p>
-            <a href="https://github.com/S1b-Team/winewarden" class="btn btn-primary" target="_blank">
-                <i class="fab fa-github"></i> View on GitHub
-            </a>
+                    <div class="doc-article-body">
+                        <div class="integration-method">
+                            <h3>Launch Options</h3>
+                            <p>Add this to your game's launch options in Steam:</p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-label">Steam Launch Options</span>
+                                    <button class="copy-btn" onclick="copyCode(this)">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                                <pre><code>winewarden run -- %command%</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="integration-method" id="lutris">
+                            <h3>Lutris</h3>
+                            <p>In Lutris, go to <strong>System Options → Command prefix</strong>:</p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-label">Lutris Settings</span>
+                                    <button class="copy-btn" onclick="copyCode(this)">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                                <pre><code>winewarden run --</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="integration-method" id="heroic">
+                            <h3>Heroic Games Launcher</h3>
+                            <p>In game settings, add to <strong>Launch Arguments</strong>:</p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-label">Heroic Settings</span>
+                                    <button class="copy-btn" onclick="copyCode(this)">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                                <pre><code>winewarden run -- %command%</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Security Section -->
+                <article class="doc-article" id="security">
+                    <header class="doc-article-header">
+                        <div class="doc-article-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h2>Security Features</h2>
+                            <p class="doc-article-meta">How WineWarden protects you</p>
+                        </div>
+                    </header>
+
+                    <div class="doc-article-body">
+                        <div class="security-features-grid">
+                            <div class="security-feature-card" id="filesystem">
+                                <div class="security-icon">
+                                    <i class="fas fa-folder-tree"></i>
+                                </div>
+                                <h4>Filesystem Virtualization</h4>
+                                <p>Games run in isolated mount namespaces with Landlock LSM enforcement. They can only see their designated sandbox, not your personal files.</p>
+                                <ul>
+                                    <li>Copy-on-write efficiency</li>
+                                    <li>Automatic prefix isolation</li>
+                                    <li>Sacred zones protection</li>
+                                </ul>
+                            </div>
+
+                            <div class="security-feature-card" id="network-security">
+                                <div class="security-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <h4>Network Intelligence</h4>
+                                <p>Full DNS packet parsing reveals every domain your games contact. Real-time connection tracking exposes hidden telemetry.</p>
+                                <ul>
+                                    <li>DNS query monitoring</li>
+                                    <li>Outbound connection tracking</li>
+                                    <li>Destination analysis</li>
+                                </ul>
+                            </div>
+
+                            <div class="security-feature-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-ban"></i>
+                                </div>
+                                <h4>Process Control</h4>
+                                <p>Block shell execution, script interpreters, and suspicious child processes. Prevent privilege escalation attempts.</p>
+                                <ul>
+                                    <li>Shell/script blocking</li>
+                                    <li>Process limits</li>
+                                    <li>Wildcard pattern matching</li>
+                                </ul>
+                            </div>
+
+                            <div class="security-feature-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>Dynamic Trust</h4>
+                                <p>Games earn trust based on behavior. Automatic tier adjustments with manual override capabilities.</p>
+                                <ul>
+                                    <li>0-100 scoring system</li>
+                                    <li>Behavior analysis</li>
+                                    <li>Tier recommendations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CTA Section -->
+                <div class="docs-cta-modern">
+                    <div class="docs-cta-content">
+                        <i class="fab fa-github"></i>
+                        <h3>Need More Help?</h3>
+                        <p>Check out our GitHub repository for detailed documentation, examples, and community support.</p>
+                        <a href="https://github.com/S1b-Team/winewarden" class="btn btn-primary btn-large" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<script>
+// Active section highlighting in sidebar
+const sections = document.querySelectorAll('.doc-article');
+const navLinks = document.querySelectorAll('.docs-nav-link');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Smooth scroll for sidebar links
+document.querySelectorAll('.docs-nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// Search functionality (basic)
+const searchInput = document.getElementById('docsSearch');
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const articles = document.querySelectorAll('.doc-article');
+        
+        articles.forEach(article => {
+            const text = article.textContent.toLowerCase();
+            if (text.includes(term)) {
+                article.style.display = 'block';
+            } else {
+                article.style.display = term === '' ? 'block' : 'none';
+            }
+        });
+    });
+}
+</script>
