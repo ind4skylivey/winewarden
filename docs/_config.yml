@@ -1,8 +1,8 @@
 # Site settings
 title: "WineWarden"
 description: "Game Without Fear - Security sandbox for Windows games on Linux"
-baseurl: ""
-url: "https://s1b-team.github.io/winewarden"
+baseurl: "/winewarden"
+url: "https://s1b-team.github.io"
 
 # GitHub settings
 repository: S1b-Team/winewarden
